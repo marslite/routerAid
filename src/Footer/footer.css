@@ -4,8 +4,8 @@
     text-align: center  ; 
     justify-content: center;
     display: flex;
-    padding: 20px ; 
-    position: relative; 
+    padding: 30px ; 
+    position: absolute; 
     bottom: 0; 
     width: 100%; 
 

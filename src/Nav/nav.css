@@ -1,9 +1,5 @@
 .nav-cl{
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* border: solid wheat; */
     flex-grow: 2;
-
 }
 
 .nav-ed{
@@ -15,8 +11,6 @@
     height: 100px;
 }
 
-/* .spacer-1{ */
-/* } */
 
 .spacer-2{
     display: flex;
