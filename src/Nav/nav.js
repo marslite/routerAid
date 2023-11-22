@@ -10,14 +10,13 @@ function Navbar(){
 
 
         <nav className="navbar navbar-dark bg-dark nav-ex">
-            <a className="navbar-brand" href="#">Multiblock</a>
-            <span className="spacer-1">
+            <a className="navbar-brand btn " href="#">Multiblock</a>
+        <span className="spacer-1">
             <form class="form-inline my-2 my-lg-0 spacer-2">
             <input class="form-control mr-sm-2" type="search" placeholder="Search"/>
-            <button class="btn btn-danger btn-ed" type="submit">Search</button>
+            <button class="btn btn-warning btn-ed" type="submit"> <b>Search</b></button>
             </form>
-
-            </span>
+        </span>
         </nav> 
 
 

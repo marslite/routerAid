@@ -11,7 +11,7 @@
 
 
 .web-wrap{
-    border: solid rebeccapurple;
+    /* border: solid rebeccapurple; */
     /* flex: 1; */
     height: 32rem;
     display: flex;
