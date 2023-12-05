@@ -9,7 +9,7 @@ const Focus = () => {
   const handleTextBox1Change = (event) => {
     setTextBox1Value(event.target.value);
   };
-
+  
   const handleTextBox2Change = (event) => {
     setTextBox2Value(event.target.value);
   };
