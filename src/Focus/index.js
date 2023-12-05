@@ -9,6 +9,7 @@ const Focus = () => {
   const [websitesArray, setWebsitesArray] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
 
+
   const handleTextBox1Change = (event) => {
     setTextBox1Value(event.target.value);
   };
@@ -29,51 +30,62 @@ const Focus = () => {
       const startTime = textBox1Value.split(':');
       const endTime = textBox2Value.split(':');
 
-      // Convert hours and minutes to minutes for easier comparison
-      const startMinutes = parseInt(startTime[0]) * 60 + parseInt(startTime[1]);
-      const endMinutes = parseInt(endTime[0]) * 60 + parseInt(endTime[1]);
+      // Check if minutes are either '00' or '30'
+      const isValidMinutes = (minutes) => {
+        return minutes === '00' || minutes === '30';
+      };
 
-      // Check if the starting time is earlier than the ending time
-      if (startMinutes < endMinutes) {
+      // Validate minutes format
+      if (isValidMinutes(startTime[1]) && isValidMinutes(endTime[1])) {
 
-        // Parse the string, eliminate leading 'www.', and save in array
-        const parsedWebsites = textBox3Value
-          .split(' ')
-          .map(website => website.replace(/^www\./, ''));
+        // Convert hours and minutes to minutes for easier comparison
+        const startMinutes = parseInt(startTime[0]) * 60 + parseInt(startTime[1]);
+        const endMinutes = parseInt(endTime[0]) * 60 + parseInt(endTime[1]);
 
-        setWebsitesArray((prevWebsitesArray) => {
-          console.log('Previous Websites Array:', prevWebsitesArray);
-          console.log('Updated Websites Array:', parsedWebsites);
-          return parsedWebsites;
-        });
+        // Check if the starting time is earlier than the ending time
+        if (startMinutes < endMinutes) {
+
+          // Parse the string, eliminate leading 'www.', and save in array
+          const parsedWebsites = textBox3Value
+            .split(' ')
+            .map(website => website.replace(/^www\./, ''));
+
+          setWebsitesArray((prevWebsitesArray) => {
+            console.log('Previous Websites Array:', prevWebsitesArray);
+            console.log('Updated Websites Array:', parsedWebsites);
+            return parsedWebsites;
+          });
 
 
-        // You can perform any actions with the values of the text boxes here
-        console.log('TextBox 1 Value:', textBox1Value);
-        console.log('TextBox 2 Value:', textBox2Value);
-        console.log('TextBox 3 Value:', textBox3Value);
+          // You can perform any actions with the values of the text boxes here
+          console.log('TextBox 1 Value:', textBox1Value);
+          console.log('TextBox 2 Value:', textBox2Value);
+          console.log('TextBox 3 Value:', textBox3Value);
 
-        // Build and return an array of JSON objects
-        const resultArray = parsedWebsites.map(parsedWebsite => ({
-          parsedWebsites: parsedWebsite,
-          textBox1Value: textBox1Value,
-          textBox2Value: textBox2Value
-        }));
+          // Build and return an array of JSON objects
+          const resultArray = parsedWebsites.map(parsedWebsite => ({
+            parsedWebsites: parsedWebsite,
+            textBox1Value: textBox1Value,
+            textBox2Value: textBox2Value
+          }));
 
-        // You can perform any actions with the values of the text boxes here
-        console.log('Result Array:', resultArray);
+          // You can perform any actions with the values of the text boxes here
+          console.log('Result Array:', resultArray);
 
-        setWebsitesArray(parsedWebsites);
+          setWebsitesArray(parsedWebsites);
 
-        setErrorMessage(''); // Clear any previous error message
+          setErrorMessage(''); // Clear any previous error message
+        } else {
+          setErrorMessage('Please make sure the starting time is earlier than the ending time');
+        }
+
       } else {
-        setErrorMessage('Please make sure the starting time is earlier than the ending time');
+        setErrorMessage('Please make sure minutes are in the format 00 or 30');
       }
-    } else {
+    }
+    else {
       setErrorMessage('Please make sure both time values are in the format HH:mm (e.g., 12:34)');
     }
-
-
 
   };
 
