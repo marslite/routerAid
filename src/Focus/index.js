@@ -58,9 +58,9 @@ const Focus = () => {
 
 
           // You can perform any actions with the values of the text boxes here
-          console.log('TextBox 1 Value:', textBox1Value);
-          console.log('TextBox 2 Value:', textBox2Value);
-          console.log('TextBox 3 Value:', textBox3Value);
+          //console.log('TextBox 1 Value:', textBox1Value);
+          //console.log('TextBox 2 Value:', textBox2Value);
+          //console.log('TextBox 3 Value:', textBox3Value);
 
           // Build and return an array of JSON objects
           const resultArray = parsedWebsites.map(parsedWebsite => ({
