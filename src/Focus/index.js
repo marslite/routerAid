@@ -6,13 +6,27 @@ const Focus = () => {
   const [textBox1Value, setTextBox1Value] = useState('');
   const [textBox2Value, setTextBox2Value] = useState('');
   const [textBox3Value, setTextBox3Value] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleTextBox1Change = (event) => {
     setTextBox1Value(event.target.value);
+    // // Validate if the entered value matches the "00:00" format
+    // if (/^\d{2}:\d{2}$/.test(inputValue) || inputValue === '') {
+    //   setTextBox2Value(inputValue);
+    //   setErrorMessage('');
+    // } else {
+    //   setErrorMessage('Please enter a valid time in the format HH:mm (e.g., 12:34)');
+    // }
   };
   
   const handleTextBox2Change = (event) => {
     setTextBox2Value(event.target.value);
+    // if (/^\d{2}:\d{2}$/.test(inputValue) || inputValue === '') {
+    //   setTextBox2Value(inputValue);
+    //   setErrorMessage('');
+    // } else {
+    //   setErrorMessage('Please enter a valid time in the format HH:mm (e.g., 12:34)');
+    // }
   };
 
   const handleTextBox3Change = (event) => {
@@ -20,10 +34,16 @@ const Focus = () => {
   };
 
   const handleSubmit = () => {
-    // You can perform any actions with the values of the text boxes here
-    console.log('TextBox 1 Value:', textBox1Value);
-    console.log('TextBox 2 Value:', textBox2Value);
-    console.log('TextBox 3 Value:', textBox3Value);
+    // Check if both time values are in the correct format before submitting
+    if (/^\d{2}:\d{2}$/.test(textBox1Value) && /^\d{2}:\d{2}$/.test(textBox2Value)) {
+      // You can perform any actions with the values of the text boxes here
+      console.log('TextBox 1 Value:', textBox1Value);
+      console.log('TextBox 2 Value:', textBox2Value);
+      console.log('TextBox 3 Value:', textBox3Value);
+      setErrorMessage(''); // Clear any previous error message
+    } else {
+      setErrorMessage('Please make sure both time values are in the format HH:mm (e.g., 12:34)');
+    }
   };
 
   return (
@@ -43,7 +63,7 @@ const Focus = () => {
       {/* First text box */}
       <input
         type="text"
-        placeholder="Enter Starting Time"
+        placeholder="Enter Start Time (00:00)"
         value={textBox1Value}
         onChange={handleTextBox1Change}
         className="text-box"
@@ -52,15 +72,18 @@ const Focus = () => {
       {/* Second text box */}
       <input
         type="text"
-        placeholder="Enter Ending Time"
+        placeholder="Enter End Time (00:00)"
         value={textBox2Value}
         onChange={handleTextBox2Change}
         className="text-box"
       />
 
-      {/* Submit button */}
-      <button onClick={handleSubmit} className="submit-button">Submit</button>
+       {/* Submit button */}
+       <button onClick={handleSubmit} className="submit-button">Submit</button>
 
+      {/* Display error message, if any */}
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      
       <Footer />
     </div>
   );
