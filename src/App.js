@@ -4,6 +4,7 @@ import Navbar from './Nav/nav';
 import Footer from './Footer/footer';
 import { Routes, Route, Navigate, HashRouter  } from 'react-router-dom';
 import './App.css';
+import Focus from './Focus';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
@@ -27,6 +28,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage/>} />
+          <Route path="/focus" element={<Focus/>} />
         </Routes>
       </HashRouter>
 
