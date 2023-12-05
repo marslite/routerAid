@@ -6,14 +6,31 @@ import Footer from '../Footer/footer';
 
 const HomePage = () => {
   const [domainOne, setDomainOne] = useState('');
-  const [domainTwo, setDomainTwo] = useState('');
+  // const [domainTwo, setDomainTwo] = useState('');
   const [file, setFile] = useState(null);
+  const [domains, setDomains] = useState([]);
+
+  // const domains
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle the form submission logic here
-    console.log(domainOne, domainTwo, file);
+
+    if(domainOne !== ''){
+      //Storing all the submitted domains inside domains[]
+      const domainOneRefined = domainOne.toLowerCase();
+      const conformURL = domainOneRefined.replace(/^https?:\/\//, '').replace(/^www\./,'').replace(
+        '/','').toLowerCase();
+      setDomains([...domains, conformURL]);
+    }
+
+    console.log(domains, "Current stored domains");
+
+    setDomainOne('');
+    setFile(null)
   };
+
+
+
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -36,20 +53,24 @@ const HomePage = () => {
                           onChange={(e) => setDomainOne(e.target.value)} 
                         />
                       </div>
-                      <div className="input-group">
+
+                      {/* <div className="input-group">
                         <label>Domain 2:</label>
                         <input 
                           type="text" 
                           value={domainTwo} 
                           onChange={(e) => setDomainTwo(e.target.value)} 
                         />
-                      </div>
+                      </div> */}
+
                       <div className="input-group">
-                        <label>Upload File:</label>
+                        <label>Upload File: (Inser Link without HTTP) </label>
                         <input 
                           type="file" 
                           onChange={handleFileChange} 
                           accept=".txt"
+                          disabled={domainOne !== ''}
+                          
                         />
                       </div>
                       <button type="submit" className='btn btn-danger mt-2 btn-d'>

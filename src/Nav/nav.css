@@ -23,3 +23,17 @@
 .spacer-1{
     margin-right: 35px;
 }
+
+
+.btn-ed{
+    border-radius: 20px;
+    /* background: purple !important; */
+}
+
+.tx-pos{
+    margin-left: 10px;
+    color: rgb(195, 195, 170) !important;
+    font-weight: 800;
+    /* background-color: ; */
+}
+
