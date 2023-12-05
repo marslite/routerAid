@@ -5,6 +5,7 @@ import './index.css'; // Import the CSS file for styling
 const Focus = () => {
   const [textBox1Value, setTextBox1Value] = useState('');
   const [textBox2Value, setTextBox2Value] = useState('');
+  const [textBox3Value, setTextBox3Value] = useState('');
 
   const handleTextBox1Change = (event) => {
     setTextBox1Value(event.target.value);
@@ -14,15 +15,30 @@ const Focus = () => {
     setTextBox2Value(event.target.value);
   };
 
+  const handleTextBox3Change = (event) => {
+    setTextBox3Value(event.target.value);
+  };
+
   const handleSubmit = () => {
     // You can perform any actions with the values of the text boxes here
     console.log('TextBox 1 Value:', textBox1Value);
     console.log('TextBox 2 Value:', textBox2Value);
+    console.log('TextBox 3 Value:', textBox3Value);
   };
 
   return (
     <div className="focus-container">
       <h1>Testing Focus</h1>
+
+      {/* Third, longer text box */}
+      <input
+        type="text"
+        placeholder="Enter the websites address Separated with Space(' ')"
+        value={textBox3Value}
+        onChange={handleTextBox3Change}
+        className="long-text-box"
+      />
+
 
       {/* First text box */}
       <input
