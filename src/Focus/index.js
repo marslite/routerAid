@@ -40,6 +40,7 @@ const Focus = () => {
         const parsedWebsites = textBox3Value
           .split(' ')
           .map(website => website.replace(/^www\./, ''));
+
         setWebsitesArray((prevWebsitesArray) => {
           console.log('Previous Websites Array:', prevWebsitesArray);
           console.log('Updated Websites Array:', parsedWebsites);
@@ -51,6 +52,18 @@ const Focus = () => {
         console.log('TextBox 1 Value:', textBox1Value);
         console.log('TextBox 2 Value:', textBox2Value);
         console.log('TextBox 3 Value:', textBox3Value);
+
+        // Build and return an array of JSON objects
+        const resultArray = parsedWebsites.map(parsedWebsite => ({
+          parsedWebsites: parsedWebsite,
+          textBox1Value: textBox1Value,
+          textBox2Value: textBox2Value
+        }));
+
+        // You can perform any actions with the values of the text boxes here
+        console.log('Result Array:', resultArray);
+
+        setWebsitesArray(parsedWebsites);
 
         setErrorMessage(''); // Clear any previous error message
       } else {
